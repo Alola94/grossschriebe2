@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Case Converter</title>
+    <style>
+        /* CSS styles here */
+         body, html {
+            margin: 0; /* Remove default margins for full width */
+            font-size: 16px; /* Adjust for better readability on mobile */
+        }
+        .container {
+            max-width: 500px; /* Set a maximum width for responsiveness */
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px; /* Adjust height for mobile view */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            justify-content: space-around;
+        }
+
+        button {
+            width: 100%; /* Make buttons full width on mobile */
+            margin-bottom: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Case Converter</h1>
+        <textarea id="inputText" placeholder="Enter your text here"></textarea>
+        <div class="buttons">
+            <button onclick="convertToUppercase()">Uppercase</button>
+            <button onclick="convertToLowercase()">Lowercase</button>
+            <button onclick="convertToSentenceCase()">Sentence Case</button>
+            <button onclick="convertToCamelCase()">Camel Case</button>
+        </div>
+        <textarea id="outputText" placeholder="Converted text will appear here"></textarea>
+    </div>
+
+    <script>
+        /* JavaScript functions here */
+        function convertToUppercase() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = document.getElementById("outputText");
+            outputText.value = inputText.toUpperCase();
+        }
+
+        function convertToLowercase() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = document.getElementById("outputText");
+            outputText.value = inputText.toLowerCase();
+        }
+
+        function convertToSentenceCase() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = document.getElementById("outputText");
+            outputText.value = inputText.charAt(0).toUpperCase() + inputText.slice(1).toLowerCase();
+        }
+
+        function convertToCamelCase() {
+            let inputText = document.getElementById("inputText").value;
+            let outputText = document.getElementById("outputText");
+            outputText.value = inputText.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        }
+    </script>
+</body>
+</html>
